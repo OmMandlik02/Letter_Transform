@@ -9,13 +9,30 @@ export default function TextForm(props) {
   const handleUpClick = function () {
     setText(text.toUpperCase())
     console.log('Uppercase is called')
+    if(text.length>0){
+      props.changeAlert('Converted to uppercase successfully','success')
+    }else{
+      props.changeAlert('Please enter the text','warning');
+    }
+   
     // setText()
   }
   const handleLowClick = function () {
     setText(text.toLowerCase())
+    if(text.length>0){
+      props.changeAlert('Converted to lowercase successfully','success')
+    }else{
+      props.changeAlert('Please enter the text','warning');
+    }
+
   }
   const handleClearClick = function () {
     setText('')
+    if(text.length>0){
+      props.changeAlert('Text is cleard','success')
+    }else{
+      props.changeAlert('Please enter the text','warning');
+    }
   }
   const handleCapitalizeClick = function () {
     const words = text.split(" ");
@@ -28,6 +45,11 @@ export default function TextForm(props) {
     }
     var u = words.join(" ");
     setText(u)
+    if(text.length>0){
+      props.changeAlert('Text is capitalized','success')
+    }else{
+      props.changeAlert('Please enter the text','warning');
+    }
   }
 
   const handleOnchange = function (event) {
