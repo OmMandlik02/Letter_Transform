@@ -4,7 +4,13 @@ import TextForm from './Components/TextForm.js'
 import './App.css';
 import Alert from './Components/Alert';
 import { useState } from 'react';
-let name='om';
+import About from './Components/About';
+import{
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+}from 'react-router-dom'
 
 
 function App() {
@@ -32,9 +38,16 @@ function App() {
   }
   return (
     <>
+    <Router>
     <Navbar title="Letter transform" about="About app" mode={mode} togglemode={tooglemode} />
     <Alert alert={alert}/>
-    <TextForm head="Enter text to transform" mode={mode} changeAlert={changeAlert} />
+      <Routes>
+        <Route path="/" element={<TextForm head="Enter text to transform" mode={mode} changeAlert={changeAlert} />}>
+        </Route>
+        <Route path="/about" element={<About mode={mode}/>}>
+        </Route>
+      </Routes>
+    </Router>    
     </>
   );
 }
